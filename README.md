@@ -44,6 +44,9 @@ O objetivo desse trabalho é encontrar as palavras mais frequentes num conjunto 
 - ```check```: Percorre o mapa até o fim. Caso a palavra atual tenha frequência maior do que o primeiro elemento do vector, eles trocam de lugar e o heap é refeito através da chamada de ```buildHeap```.
 
 ## Implementação da hash usando ```unordered_map```
+Unordered maps são estruturas que guardam elementos associados à uma chave, que deve ser única, o que permite um acesso rápido com custo constante. Na parte interna do unordered map, os itens não são ordenados de acordo com sua chave ou valor, mas são separados em baldes. O balde no qual o item será inserido é determinado pelo resultado de uma função que tem sua chave como parâmetro, ou seja, há a implementação de uma tabela hash.
+
+As palavras lidas dos textos podem ser consideradas como chave únicas da hash porque uma cadeia de caracteres só vai ser exatamente igual à ela mesma. O número de colisões da hash não foi um problema a ser tratado nesse programa, pois esse evento é necessário para contar a frequência das palavras. 
 
 ## Resolução do problema
 
@@ -85,10 +88,21 @@ Entrada: textos "DC.txt" e "SMA.txt".
 <br>Resultado esperado:<br><br>
 <img src="imgs/resultados.png">
 
+Custo computacional:
+- Build heap: O(n log k);
+- Rebuild heap: O(log k);
+- Acesso à hash: O(1).
+
+Sendo n o tamanho da coleção de dados.
+
 ## Conclusão
 A partir desse trabalho, foi possível concluir que o uso de hash para contar a frequência dos elementos e heap para manter a lista dos k elementos com maiores valores provou-se um método rápido e simples. O método também se mostra adequado pelas suas características de uso de tempo e espaço: o tempo de execução foi muito pequeno para a entrada determinada e apenas duas estruturas foram necessárias para a obtenção da informação buscada, ou seja, houve pouco espaço consumido.
 
+O parâmetro "Hash" do template do unordered map permite a personalização da função hash usada internamente, porém, como neste trabalho os elementos a serem salvos foram strings, não houve a necessidade de modificá-la, porque compara-se a string c
+
 ## Referências
+- Unordered map. https://cplusplus.com/reference/unordered_map/unordered_map/. Acesso em 24/08/2023;
+
 
 ## Compilação e execução
 * Especificações da máquina em que o código foi rodado:
